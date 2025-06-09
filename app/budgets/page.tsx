@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Edit, Plus } from "lucide-react"
+import { Edit, Plus, Download } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -31,6 +31,12 @@ export default async function BudgetsPage() {
           </Button>
           <Button asChild variant="outline" size="sm">
             <Link href="/reports">Relatórios</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/api/export/budgets">
+              <Download className="mr-2 h-4 w-4" />
+              Exportar CSV
+            </Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/budgets/new">
