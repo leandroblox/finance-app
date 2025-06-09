@@ -71,16 +71,16 @@ export default async function Home() {
             <span>FinançasPessoais</span>
           </Link>
           <nav className="ml-auto flex gap-2">
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm" id="nav-transactions">
               <Link href="/transactions">Transações</Link>
             </Button>
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm" id="nav-budgets">
               <Link href="/budgets">Orçamentos</Link>
             </Button>
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm" id="nav-reports">
               <Link href="/reports">Relatórios</Link>
             </Button>
-            <Button asChild size="sm">
+            <Button asChild size="sm" id="nav-new-transaction">
               <Link href="/transactions/new">
                 <Plus className="mr-2 h-4 w-4" />
                 Nova Transação
@@ -89,7 +89,7 @@ export default async function Home() {
           </nav>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div id="dashboard-cards" className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Saldo Total</CardTitle>
