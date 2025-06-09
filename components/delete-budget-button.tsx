@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Trash } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { removeBudget } from "@/app/actions"
@@ -11,11 +12,13 @@ interface DeleteBudgetButtonProps {
 
 export function DeleteBudgetButton({ id }: DeleteBudgetButtonProps) {
   const [isDeleting, setIsDeleting] = useState(false)
+  const router = useRouter()
 
   const handleDelete = async () => {
     setIsDeleting(true)
     try {
       await removeBudget(id)
+      router.refresh()
     } catch (error) {
       console.error("Erro ao excluir orçamento:", error)
     } finally {
