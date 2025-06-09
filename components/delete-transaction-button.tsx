@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Trash } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { removeTransaction } from "@/app/actions"
@@ -11,11 +12,13 @@ interface DeleteTransactionButtonProps {
 
 export function DeleteTransactionButton({ id }: DeleteTransactionButtonProps) {
   const [isDeleting, setIsDeleting] = useState(false)
+  const router = useRouter()
 
   const handleDelete = async () => {
     setIsDeleting(true)
     try {
       await removeTransaction(id)
+      router.refresh()
     } catch (error) {
       console.error("Erro ao excluir transação:", error)
     } finally {
