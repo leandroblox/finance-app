@@ -1,10 +1,17 @@
 import { Redis } from "@upstash/redis"
 
+// Verifica se as variáveis de ambiente necessárias estão definidas
+const url = process.env.KV_REST_API_URL
+const token = process.env.KV_REST_API_TOKEN
+
+if (!url || !token) {
+  throw new Error(
+    "Redis credentials missing: set KV_REST_API_URL and KV_REST_API_TOKEN",
+  )
+}
+
 // Inicializa o cliente Redis usando as variáveis de ambiente
-export const redis = new Redis({
-  url: process.env.KV_REST_API_URL || "",
-  token: process.env.KV_REST_API_TOKEN || "",
-})
+export const redis = new Redis({ url, token })
 
 // Tipos de dados
 export interface Transaction {
